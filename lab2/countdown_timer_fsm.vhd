@@ -11,6 +11,7 @@ entity countdown_timer_fsm is
         start_btn   : in  STD_LOGIC;
         switches    : in  STD_LOGIC_VECTOR(3 downto 0);
 
+        -- Outputs
         count_out   : out STD_LOGIC_VECTOR(3 downto 0);
         done        : out STD_LOGIC
     );
@@ -50,6 +51,7 @@ begin
     process(current_state, load_btn, start_btn, clk_en_1hz, count_reg,
             loaded_value, switches)
     begin
+        -- Default assignments (hold current values)
         next_state <= current_state;
         count_next <= count_reg;
         loaded_val_next <= loaded_value;
@@ -67,36 +69,34 @@ begin
 
             when LOAD =>
                 -- Sample switches and store value
-                if unsigned(switches) = 0 then
-                    loaded_val_next <= DEFAULT_COUNT;
-                else
+                -- Check if switches contain valid binary values (0-15)
+                if (switches(0) = '0' or switches(0) = '1') and
+                   (switches(1) = '0' or switches(1) = '1') and
+                   (switches(2) = '0' or switches(2) = '1') and
+                   (switches(3) = '0' or switches(3) = '1') then
+                    -- Valid binary value, load it (including 0)
                     loaded_val_next <= unsigned(switches);
+                else
+                    -- Invalid value (X, U, Z, H, L, W, -), use default
+                    loaded_val_next <= DEFAULT_COUNT;
                 end if;
-
-                -- Return to IDLE after loading
                 next_state <= IDLE;
 
             when COUNTING =>
-                -- Decrement counter at 1 Hz rate
                 if clk_en_1hz = '1' then
                     if count_reg = 1 then
-                        -- Reached zero, transition to done
                         count_next <= (others => '0');
                         next_state <= DONE_STATE;
                     else
-                        -- Continue counting down
                         count_next <= count_reg - 1;
                     end if;
                 end if;
 
             when DONE_STATE =>
-                -- Countdown complete, wait for new command
                 if load_btn = '1' then
-                    -- Load new value
                     next_state <= LOAD;
 
                 elsif start_btn = '1' then
-                    -- Restart with current loaded value
                     count_next <= loaded_value;
                     next_state <= COUNTING;
                 end if;
@@ -107,10 +107,9 @@ begin
         end case;
     end process;
 
-    -- Output logic (Moore machine - outputs depend only on state)
+    -- Output logic
     process(current_state, count_reg, loaded_value)
     begin
-        -- Default outputs
         done <= '0';
 
         case current_state is
