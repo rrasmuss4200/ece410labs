@@ -88,7 +88,7 @@ begin
         case curr_state is
             when IDLE =>
                 rgb_state <= "100"; -- Red
-                count_out <= std_logic_vector(to_unsigned(0, 4));
+                count_out <= std_logic_vector(to_unsigned(loaded_val, 4));
                 
                 if load_btn = '1' then
                     next_state <= LOAD;
