@@ -9,3 +9,11 @@ Design Decisions:
 - In the idle state it shows the previous loaded value which is the value that is loaded and what we will count down from
 - After loading, then pressing load we get sent back to the idle state
 - We have a DONE state however it is not fully needed.
+
+
+Issues and things to discuss:
+- The simulation result is different from the actual hardware implementation
+    -> Loading works in hardware however it does not load in our simulation
+- Some Issues:
+    -> had a clock in our sensitivity list and used it in purly combinational block
+    -> Had multiple clocks in our fsm
