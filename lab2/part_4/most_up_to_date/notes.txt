@@ -1,0 +1,3 @@
+Potential problems:
+- done is too short
+- goes to the idle state but then sleep is still up so just goes back to sleep.
