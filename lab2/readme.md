@@ -17,3 +17,6 @@ Issues and things to discuss:
 - Some Issues:
     -> had a clock in our sensitivity list and used it in purly combinational block
     -> Had multiple clocks in our fsm
+
+PART 3:
+- busy is intially set to 1 so that we do not go to alarm on the first clk
