@@ -43,6 +43,7 @@ entity secure_element_fsm is
     attack_detected : in std_logic;
     reset : in std_logic;
     RGB : out std_logic_vector(2 downto 0);
+    flash_clk : in std_logic
    );
 end secure_element_fsm;
 
@@ -63,9 +64,10 @@ begin
 -- when exiting start up state, check BUSY, THEN self-test
 
 
-    state_combinational_logic : process (present_state, busy, self_test, startup, sleep, request, secure_channel, attack_detected) is
+    state_combinational_logic : process (present_state, busy, self_test, startup, sleep, request, secure_channel, attack_detected,
+        flash_clk) is
     begin
---        next_state <= present_state;
+
         case present_state is
             when ST_STARTUP => 
                 RGB <= "001"; -- blue
@@ -110,8 +112,14 @@ begin
                 end if;
 
             when ST_ALARM =>
-                RGB <= "100";
+                if flash_clk = '1' then
+                    RGB <= "100";
+                else
+                    RGB <= "000";
+                end if;
                 next_state <= ST_ALARM;
+                
+                
         end case;
     end process state_combinational_logic;
 
