@@ -1,0 +1,19 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../../Downloads/single_cycle_riscv/adder_32.vhdl" \
+"../../../../../Downloads/single_cycle_riscv/alu.vhdl" \
+"../../../../../lab1_bitScrambler/lab1_bitScrambler.srcs/sources_1/new/bit_scrambler.vhd" \
+"../../../../../Downloads/single_cycle_riscv/data_memory.vhdl" \
+"../../../../../Downloads/single_cycle_riscv/instruction_memory.vhdl" \
+"../../../../../Downloads/single_cycle_riscv/mux_2to1.vhdl" \
+"../../../../../Downloads/single_cycle_riscv/pc_adder.vhdl" \
+"../../../../../Downloads/single_cycle_riscv/program_counter.vhdl" \
+"../../../../../Downloads/single_cycle_riscv/register_file.vhdl" \
+"../../../../../Downloads/single_cycle_riscv/single_cycle_controller.vhdl" \
+"../../../../../Downloads/single_cycle_riscv/tri_state_buffer.vhd" \
+"../../../../../Downloads/single_cycle_riscv/single_cycle_datapath.vhdl" \
+"../../../../../Downloads/single_cycle_riscv/single_cycle_riscv.vhd" \
+"../../../../../Downloads/single_cycle_riscv/single_cycle_riscv_tb.vhd" \
+
+# Do not sort compile order
+nosort
