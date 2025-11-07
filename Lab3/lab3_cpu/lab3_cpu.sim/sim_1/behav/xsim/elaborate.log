@@ -5,4 +5,25 @@ Running: C:/Xilinx/Vivado/2024.2/bin/unwrapped/win64.o/xelab.exe --incr --debug 
 Using 2 slave threads.
 Starting static elaboration
 Completed static elaboration
-INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling architecture behavioral of entity xil_defaultlib.program_counter [program_counter_default]
+Compiling architecture behavioral of entity xil_defaultlib.adder_32 [adder_32_default]
+Compiling architecture structural of entity xil_defaultlib.pc_adder [pc_adder_default]
+Compiling architecture rtl of entity xil_defaultlib.instr_mem [instr_mem_default]
+Compiling architecture behavioral of entity xil_defaultlib.register_file [register_file_default]
+Compiling architecture behavioral of entity xil_defaultlib.extension_unit [extension_unit_default]
+Compiling architecture behavioral of entity xil_defaultlib.mux_2to1 [mux_2to1_default]
+Compiling architecture behavioral of entity xil_defaultlib.alu [alu_default]
+Compiling architecture rtl of entity xil_defaultlib.data_mem [data_mem_default]
+Compiling architecture behavioral of entity xil_defaultlib.tri_state_buffer [tri_state_buffer_default]
+Compiling architecture structural of entity xil_defaultlib.lw_sw_datapath [lw_sw_datapath_default]
+Compiling architecture behavioral of entity xil_defaultlib.controller [controller_default]
+Compiling architecture structural of entity xil_defaultlib.single_cycle_riscv [single_cycle_riscv_default]
+Compiling architecture tb of entity xil_defaultlib.single_cycle_riscv_tb
+Built simulation snapshot single_cycle_riscv_tb_behav
