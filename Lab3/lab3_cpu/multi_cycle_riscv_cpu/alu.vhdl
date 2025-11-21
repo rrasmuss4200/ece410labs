@@ -33,9 +33,9 @@ BEGIN
 
     zero_flag <= '1' WHEN alu_out = x"00000000" ELSE '0';
     
---    lt_flag <= '1' WHEN SIGNED(src_a) < SIGNED(src_b) ELSE '0';
+    lt_flag <= '1' WHEN SIGNED(src_a) < SIGNED(src_b) ELSE '0';
     
-    lt_flag <= '1' WHEN alu_out < x"00000000" ELSE '0';
+--    lt_flag <= '1' WHEN SIGNED(alu_out) <  ELSE '0';
 
     WITH alu_ctrl SELECT
         alu_out <= src_a AND src_b WHEN "001",
@@ -45,7 +45,7 @@ BEGIN
             STD_LOGIC_VECTOR(UNSIGNED(src_a) - UNSIGNED(src_b)) WHEN "101",
             STD_LOGIC_VECTOR(SHIFT_RIGHT(UNSIGNED(src_a), TO_INTEGER(UNSIGNED(src_b)))) WHEN "111",     
             
-            STD_LOGIC_VECTOR(SIGNED(src_a) - SIGNED(src_b)) WHEN "110",            
+--            STD_LOGIC_VECTOR(SIGNED(src_a) - SIGNED(src_b)) WHEN "110",            
                
             (OTHERS => '0') WHEN OTHERS;
 

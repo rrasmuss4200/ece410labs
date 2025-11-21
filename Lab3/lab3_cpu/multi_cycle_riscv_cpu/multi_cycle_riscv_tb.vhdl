@@ -37,7 +37,7 @@ BEGIN
         WAIT FOR 1 ns;
         reset <= '0';
         WAIT FOR 1 ns;
-        FOR i IN 0 TO 40 LOOP
+        FOR i IN 0 TO 100 LOOP
             clock <= '1';
             WAIT FOR 2 ns;
             clock <= '0';

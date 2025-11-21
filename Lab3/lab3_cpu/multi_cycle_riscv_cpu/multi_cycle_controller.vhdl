@@ -25,7 +25,7 @@ ENTITY multi_cycle_controller IS
         funct7_bit5 : IN  STD_LOGIC;
         zero_flag   : IN  STD_LOGIC;
         lt_flag     : IN  STD_LOGIC;
-        output_en   : OUT STD_LOGIC;
+        output_en   : OUT STD_LOGIC :='1';
         adr_src     : OUT STD_LOGIC;
         pc_write    : OUT STD_LOGIC;
         ir_write    : OUT STD_LOGIC;
@@ -115,7 +115,7 @@ BEGIN
     alu_src_a  <= alu_src_a_s;
     alu_src_b  <= alu_src_b_s;
     alu_ctrl   <= alu_ctrl_s;
-    output_en  <= '0';
+    output_en  <= '1';
 
     --------------------------------------------------------------------------
     -- Instruction decoding and immediate selection
@@ -172,7 +172,7 @@ BEGIN
     --------------------------------------------------------------------------
     -- Combinational process: next state and control signal logic
     --------------------------------------------------------------------------
-    PROCESS (current_state, op_code, instruction, zero_flag, funct3)
+    PROCESS (current_state, op_code, instruction, zero_flag, funct3, lt_flag)
     BEGIN
         -- Default control signal values
         -- Instruction register and program counter updates
@@ -250,7 +250,7 @@ BEGIN
                         ELSIF funct3 = "100" then 
                             alu_src_a_s  <= "10";
                             alu_src_b_s  <= "00";
-                            alu_ctrl_s   <= "110";
+--                            alu_ctrl_s   <= "110";
                             result_src_s <= "00";
                             pc_write_s <= lt_flag;                         
                         END IF;
