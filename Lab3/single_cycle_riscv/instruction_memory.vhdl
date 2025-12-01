@@ -37,6 +37,7 @@ ARCHITECTURE rtl OF instr_mem IS
         12 => x"33", 13 => x"04", 14 => x"61", 15 => x"00",
         
         -- BEQ instr
+        -- 0xFEE508E3   beq x10, x14, -16
         16 => x"E3", 17 => x"08", 18 => x"E5", 19 => x"FE",
         OTHERS => (OTHERS => '0')
     );
@@ -53,3 +54,4 @@ BEGIN
             ROM(addr_int);
 
 END ARCHITECTURE rtl;
+
